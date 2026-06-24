@@ -267,3 +267,85 @@ def func_test(**kw):
     print("----",kw)
 
 func_test(**ddd)
+
+
+
+# def safe_divide(a, b):
+#     try:
+#         if not isinstance(a,[int,float]) or not isinstance(b,[int,float]):
+#             print("参数必须是数字")
+#         else:
+#             return a / b
+#     except ZeroDivisionError:
+#         print("除数不能为0")
+
+# safe_divide(1.5,2)
+
+import random
+
+def call_api(url, max_retries=3):
+
+    for n in range(1,max_retries+1):
+        try:
+            print(f"尝试请求 {url}，第 {n} 次")
+       
+            if random.random() < 1.0:
+                raise ConnectionError("连接失败")
+            else:
+                return "请求成功"
+        except ConnectionError as e:
+            if n == max_retries:
+                print(f"请求失败，已重试 {n} 次")
+
+
+
+call_api("http://111111",3)
+
+from collections import defaultdict
+import re
+
+def char_frequency(text):
+    dt = {}
+
+    for v in text:
+        if v == " ":
+            continue
+        dt[v] = dt.get(v,0)+1
+    return dt
+
+
+print(char_frequency("hello world"))
+
+dt = {'h': 1, 'e': 1, 'l': 3, 'o': 2, 'w': 1, 'r': 1, 'd': 1}
+
+print(dt.items())
+
+
+# print(sorted(dt,key=lambda d:d,reverse=True))
+
+# 编写函数 `parse_config(config_str)`，模拟解析 JSON 配置文件：
+
+# - 使用 `json.loads()` 解析字符串
+# - 捕获 `json.JSONDecodeError`，返回 `"格式错误：非法JSON"`
+# - 捕获解析后缺少 `"name"` 字段的情况（`KeyError`），返回 `"配置缺失：name字段"`
+# - 其他异常统一返回 `"未知错误"`
+# - 无论成功与否，最后都打印 `"解析完成"`（用 `finally`）
+import json
+
+def parse_config(config_str):
+    
+    try:
+        dictData = json.loads(config_str)
+        if dictData.get("name",None) is None:
+            return "配置缺失：name字段"
+        return dictData
+    except json.JSONDecodeError as e:
+        return "格式错误：非法JSON"
+    except Exception as e:
+        return "未知错误"
+    finally:
+        return "解析完成"
+
+config_str = '{"name":"wangsg","age":18}'
+print(parse_config(config_str))
+
