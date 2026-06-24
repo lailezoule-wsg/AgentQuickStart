@@ -102,3 +102,19 @@ dt2 = datetime(2024, 1, 3, 14, 30, 0)
 delta = dt2 - dt1
 print(delta.days, delta,delta.seconds,delta.seconds // 3600)
 
+class Temperature:
+    def __init__(self, celsius=0):
+        self._celsius = celsius
+
+    @property
+    def fahrenheit(self):
+        return self._celsius * 9 / 5 + 32
+
+    @fahrenheit.setter
+    def fahrenheit(self, value):
+        self._celsius = (value - 32) * 5 / 9
+
+t = Temperature(100)
+print(t.fahrenheit)
+t.fahrenheit = 32
+print(t._celsius)
