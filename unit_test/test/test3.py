@@ -12,19 +12,19 @@ user2 = User(name="wangsg2",age=16)
 print(user)
 print(user2)
 
-config_dict = {"name":"wangsg","age":19,"gender":"男"}
+# config_dict = {"name":"wangsg","age":19,"gender":"男"}
 
-import json
+# import json
 
-with open("config_user.json",'w',encoding="utf-8") as f:
-    json.dump(config_dict,f,ensure_ascii=False,indent=2)
+# with open("config_user.json",'w',encoding="utf-8") as f:
+#     json.dump(config_dict,f,ensure_ascii=False,indent=2)
 
-with open("config_user.json","r",encoding="utf-8") as f:
-    data = json.load(f)
-print(data)
+# with open("config_user.json","r",encoding="utf-8") as f:
+#     data = json.load(f)
+# print(data)
 
-import asyncio
-import time
+# import asyncio
+# import time
 
 # async def task(name: str, delay: int):
 #     print(f"任务 {name} 开始，等待 {delay}s")
@@ -44,77 +44,83 @@ import time
 # 启动入口（脚本必须用此方法运行）
 # asyncio.run(main())
 
-import os
-from pathlib import Path
-import logging
-from datetime import datetime
+# import os
+# from pathlib import Path
+# import logging
+# from datetime import datetime
 
 
-class Dog:
-    species = "犬科"
+# class Dog:
+#     species = "犬科"
 
-    def __init__(self, name):
-        self.name = name
+#     def __init__(self, name):
+#         self.name = name
 
-d1 = Dog("旺财")
-d2 = Dog("小白")
-d1.species = "猫科"
-print(d1.species, d2.species)
+# d1 = Dog("旺财")
+# d2 = Dog("小白")
+# d1.species = "猫科"
+# print(d1.species, d2.species)
 
-from pathlib import Path
-p = Path("/data/report.csv")
+# from pathlib import Path
+# p = Path("/data/report.csv")
 
-print(p.suffix)
+# print(p.suffix)
 
-from datetime import date
-d1 = date(2024, 1, 1)
-d2 = date(2024, 3, 1)
+# from datetime import date
+# d1 = date(2024, 1, 1)
+# d2 = date(2024, 3, 1)
 
-print(d2-d1)
-print((d2-d1).days)
+# print(d2-d1)
+# print((d2-d1).days)
 
-from dataclasses import dataclass, field
+# from dataclasses import dataclass, field
 
-@dataclass
-class Config:
-    items: list = field(default_factory=list)
+# @dataclass
+# class Config:
+#     items: list = field(default_factory=list)
 
-c1 = Config()
-c2 = Config()
-c1.items.append("a")
-print(c1.items, c2.items)
+# c1 = Config()
+# c2 = Config()
+# c1.items.append("a")
+# print(c1.items, c2.items)
 
-import asyncio
+# import asyncio
 
-async def main():
-    await asyncio.sleep(0.1)
-    return 42
+# async def main():
+#     await asyncio.sleep(0.1)
+#     return 42
 
-result = asyncio.run(main())
+# result = asyncio.run(main())
+# print(result)
+
+# print(Path("a/b/c").parent.name)
+
+# from datetime import datetime
+
+# dt1 = datetime(2024, 1, 1, 8, 0, 0)
+# dt2 = datetime(2024, 1, 3, 14, 30, 0)
+# delta = dt2 - dt1
+# print(delta.days, delta,delta.seconds,delta.seconds // 3600)
+
+# class Temperature:
+#     def __init__(self, celsius=0):
+#         self._celsius = celsius
+
+#     @property
+#     def fahrenheit(self):
+#         return self._celsius * 9 / 5 + 32
+
+#     @fahrenheit.setter
+#     def fahrenheit(self, value):
+#         self._celsius = (value - 32) * 5 / 9
+
+# t = Temperature(100)
+# print(t.fahrenheit)
+# t.fahrenheit = 32
+# print(t._celsius)
+
+from datetime import datetime, timedelta
+
+now = datetime(2024, 6, 15, 14, 30, 0)
+result = now.replace(hour=0, minute=0, second=0) + timedelta(days=1)
 print(result)
-
-print(Path("a/b/c").parent.name)
-
-from datetime import datetime
-
-dt1 = datetime(2024, 1, 1, 8, 0, 0)
-dt2 = datetime(2024, 1, 3, 14, 30, 0)
-delta = dt2 - dt1
-print(delta.days, delta,delta.seconds,delta.seconds // 3600)
-
-class Temperature:
-    def __init__(self, celsius=0):
-        self._celsius = celsius
-
-    @property
-    def fahrenheit(self):
-        return self._celsius * 9 / 5 + 32
-
-    @fahrenheit.setter
-    def fahrenheit(self, value):
-        self._celsius = (value - 32) * 5 / 9
-
-t = Temperature(100)
-print(t.fahrenheit)
-t.fahrenheit = 32
-print(t._celsius)
