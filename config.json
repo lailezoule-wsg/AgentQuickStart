@@ -1,5 +1,18 @@
 {
-  "name": "Alice",
-  "age": 30,
-  "active": true
+  "db": {
+    "host": "127.0.0.1",
+    "port": 8080,
+    "other": {
+      "t1": "ttt",
+      "t2": {
+        "tt2": "哈哈哈哈"
+      }
+    }
+  },
+  "redis": {
+    "host": "localhost",
+    "port": 3306
+  },
+  "username": "wangsg",
+  "password": "12345"
 }
